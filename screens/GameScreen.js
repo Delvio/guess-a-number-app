@@ -16,44 +16,17 @@ const generatedRandomBetween = (min, max, exclude) => {
 };
 
 const GameScreen = (props) => {
-  const lowestNumber = useRef(1);
-  const highestNumber = useRef(100);
   const [currentGuess, setCurrentGuess] = useState(
-    generatedRandomBetween(
-      lowestNumber.current,
-      highestNumber.current,
-      props.userChoice
-    )
+    generatedRandomBetween(1, 100, props.userChoice)
   );
-
-  const handleHint = (direction) => {
-    if (
-      (direction === "lower" && currentGuess <= props.userChoice) ||
-      (direction === "higher" && currentGuess >= props.userChoice)
-    ) {
-      Alert.alert("No seas palomo", "tu sabes que eso no es asi", [
-        { text: "Ya no sere palomo", style: "cancel" },
-      ]);
-      return;
-    }
-
-    if (direction === "lower") {
-      highestNumber.current = currentGuess;
-    } else {
-      lowestNumber.current = currentGuess;
-    }
-    setCurrentGuess(
-      generatedRandomBetween(lowestNumber.current, highestNumber.current)
-    );
-  };
 
   return (
     <View style={styles.screen}>
       <Text>Opponent's Guess</Text>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
-        <Button title="Lower" onPress={handleHint.bind(this, "lower")} />
-        <Button title="Greater" onPress={handleHint.bind(this, "higher")} />
+        <Button title="Lower" onPress={() => {}} />
+        <Button title="Greater" onPress={() => {}} />
       </Card>
     </View>
   );
