@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 const GameOverScreen = (props) => {
   return (
@@ -7,6 +7,7 @@ const GameOverScreen = (props) => {
       <Text>GameOver!</Text>
       <Text>It took me {props.numberOfRounds} rounds to beat you!</Text>
       <Text>Your Number is {props.userNumber} </Text>
+      <Button title="New Game" onPress={props.onReset} />
     </View>
   );
 };
