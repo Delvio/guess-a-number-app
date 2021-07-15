@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import * as Font from "expo-font";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 // Screens
 import Header from "./components/Header";
 import StartGameScreen from "./screens/StartGameScreen";
@@ -26,6 +26,7 @@ export default function App() {
       <AppLoading
         startAsync={fetchFonts}
         onFinish={() => setAssetLoaded(true)}
+        onError={() => console.log(err)}
       />
     );
   }
